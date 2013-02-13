@@ -9,12 +9,14 @@
   </tr>
 
 <% @experiments.each do |experiment| %>
-  <tr>
-    <td><%= experiment.id %></td>
-    <td><%= experiment.startTime %></td>
-    <td><%= experiment.datapoints.count %></td>
-    <td><%= button_to "Show", experiment, {:method => :get }%> 
-  </tr>
+	<% if !experiment.datapoints.empty? %>
+	  <tr>
+	    <td><%= experiment.id %></td>
+	    <td><%= experiment.startTime %></td>
+	    <td><%= experiment.datapoints.count %></td>
+	    <td><%= button_to "Show", experiment, {:method => :get }%> 
+	  </tr>
+	 <% end %>
 <% end %>
 </table>
 
