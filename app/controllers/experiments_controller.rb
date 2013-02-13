@@ -2,7 +2,7 @@ class ExperimentsController < ApplicationController
   # GET /experiments
   # GET /experiments.json
   def index
-    @experiments = Experiment.all
+    @experiments = Experiment.order("id desc").all
 
     respond_to do |format|
       format.html # index.html.erb
