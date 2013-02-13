@@ -17,6 +17,7 @@ development:
   encoding: unicode
   database: bioreactor
   pool: 5
+  host: localhost
   username: senior_project
   password: baconbacon
   template: template0
