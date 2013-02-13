@@ -9,6 +9,8 @@ nv.addGraph(function() {
       .axisLabel('Temperature')
       .tickFormat(d3.format('.02f'));
 
+  chart.forceY([0]);
+
   d3.select('#tempChart svg')
       .datum(gon.temperatureData)
     .transition().duration(500)
@@ -29,7 +31,9 @@ nv.addGraph(function() {
   chart.yAxis
       .axisLabel('DO (%)')
       .tickFormat(d3.format('.02f'));
-
+  
+  chart.forceY([0]);
+  
   d3.select('#doChart svg')
       .datum(gon.doData)
     .transition().duration(500)
@@ -50,6 +54,8 @@ nv.addGraph(function() {
   chart.yAxis
       .axisLabel('Agitation (RPM)')
       .tickFormat(d3.format('.02f'));
+  
+  chart.forceY([0]);
 
   d3.select('#agitChart svg')
       .datum(gon.agitData)
@@ -71,6 +77,8 @@ nv.addGraph(function() {
   chart.yAxis
       .axisLabel('Agitation (RPM)')
       .tickFormat(d3.format('.02f'));
+  
+  chart.forceY([0]);
 
   d3.select('#pHChart svg')
       .datum(gon.pHData)
