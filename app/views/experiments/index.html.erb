@@ -4,12 +4,16 @@
   <tr>
     <th>id</th>
     <th>Start Time</th>
+    <th>Datapoints</th>
+    <th></th>
   </tr>
 
 <% @experiments.each do |experiment| %>
   <tr>
     <td><%= experiment.id %></td>
-    <td><%= link_to experiment.startTime, experiment %></td>
+    <td><%= experiment.startTime %></td>
+    <td><%= experiment.datapoints.count %></td>
+    <td><%= button_to "Show", experiment, {:method => :get }%> 
   </tr>
 <% end %>
 </table>
