@@ -85,11 +85,7 @@ class ExperimentsController < ApplicationController
   end
 
   def current
-    @experiment = Experiment.first
-    if @experiment
-      render :show
-    else
-      redirect_to root_path
-    end
+    @experiment = Experiment.last
+    redirect_to @experiment
   end
 end
