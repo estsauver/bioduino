@@ -1,4 +1,4 @@
-nv.addGraph(function() {
+`nv.addGraph(function() {
   var chart = nv.models.lineChart();
 
   chart.xAxis
@@ -88,4 +88,4 @@ nv.addGraph(function() {
   nv.utils.windowResize(chart.update);
 
   return chart;
-});
+});`
