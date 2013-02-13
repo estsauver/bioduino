@@ -14,10 +14,16 @@ class ExperimentsController < ApplicationController
   # GET /experiments/1.json
   def show
     @experiment = Experiment.find(params[:id])
-    @temperatures = @experiment.datapoints.where(:dataType => "temperature")
-    @pHs = @experiment.datapoints.where(:dataType => "pH")
-    @agitations = @experiment.datapoints.where(:dataType => "agitation")
-    @dissolvedOxygens = @experiment.datapoints.where(:dataType => "do")
+    @temperatures = @experiment.datapoints.where(:dataType => "temperature").order("id desc").limit(500)
+    @pHs = @experiment.datapoints.where(:dataType => "pH").order("id desc").limit(500)
+    @agitations = @experiment.datapoints.where(:dataType => "agitation").order("id desc").limit(500)
+    @dissolvedOxygens = @experiment.datapoints.where(:dataType => "do").order("id desc").limit(500)
+    gon.temperatureData = [{:values => @temperatures.map{ |d| {:x => (d.time-@experiment.startTime).seconds, :y => d.value} }, :key=> "Experiment id:#{@experiment.id}", :color =>'#ff7f0e'}]
+    gon.pHData = [{:values => @pHs.map{ |d| {:x => (d.time-@experiment.startTime).seconds, :y => d.value} }, :key=> "Experiment id:#{@experiment.id}", :color =>'#ff7f0e'}]
+    gon.doData = [{:values => @dissolvedOxygens.map{ |d| {:x => (d.time-@experiment.startTime).seconds, :y => d.value} }, :key=> "Experiment id:#{@experiment.id}", :color =>'#ff7f0e'}]
+    gon.agitData = [{:values => @agitations.map{ |d| {:x => (d.time-@experiment.startTime).seconds, :y => d.value} }, :key=> "Experiment id:#{@experiment.id}", :color =>'#ff7f0e'}]
+
+    puts gon.temperatureData
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @experiment }

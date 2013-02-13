@@ -6,6 +6,8 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
+gem 'gon'
+gem 'rabl'
 gem 'jquery-rails'
 gem "thin", ">= 1.5.0"
 gem "pg", ">= 0.14.1"
