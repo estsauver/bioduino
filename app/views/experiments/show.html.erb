@@ -2,6 +2,7 @@
 
 <p id="notice"><%= notice %></p>
 <%= button_to "Raw Data", raw_data_path(@experiment) %>
+<%= button_to "Excel", raw_data_path(@experiment, format: "xls")%> 
 <style>
 
 #tempChart svg {

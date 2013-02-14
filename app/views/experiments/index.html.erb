@@ -6,6 +6,8 @@
     <th>Start Time</th>
     <th>Datapoints</th>
     <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
 <% @experiments.each do |experiment| %>
@@ -14,7 +16,9 @@
 	    <td><%= experiment.id %></td>
 	    <td><%= experiment.startTime %></td>
 	    <td><%= experiment.datapoints.count %></td>
-	    <td><%= button_to "Show", experiment, {:method => :get }%> 
+	    <td><%= button_to "Show", experiment, {:method => :get }%> </td>
+	    <td><%= button_to "Raw Data", raw_data_path(experiment) %></td>
+	    <td><%= button_to "Excel", raw_data_path(experiment, format: "xls")%></td>
 	  </tr>
 	 <% end %>
 <% end %>
