@@ -33,3 +33,5 @@ nv.addGraph ->
   d3.select("#pHChart svg").datum(gon.pHData).transition().duration(500).call chart
   nv.utils.windowResize chart.update
   chart
+
+
