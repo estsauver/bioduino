@@ -4,7 +4,7 @@ Bioduino::Application.routes.draw do
 
   resources :experiments
   match "/current" => "experiments#current"
-  match "/experiments/raw_data/:id" => "experiments#raw_data"
+  match "/experiments/raw_data/:id" => "experiments#raw_data", :as => :raw_data
   root :to => "home#index"
 
 end
