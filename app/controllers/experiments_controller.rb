@@ -103,5 +103,11 @@ class ExperimentsController < ApplicationController
     @pHs = @experiment.datapoints.where(:dataType => "pH").order("id desc").all
     @agitations = @experiment.datapoints.where(:dataType => "agitation").order("id desc").all
     @dissolvedOxygens = @experiment.datapoints.where(:dataType => "do").order("id desc").all
+    @maximumGroupInt = @experiment.datapoints.maximum("group_int")
+    @minimumGroupInt = @experiment.datapoints.minimum("group_int")
+    respond_to do |format|
+      format.html
+      format.xls 
+    end
   end
 end

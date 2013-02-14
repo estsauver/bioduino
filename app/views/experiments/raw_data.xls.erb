@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Datapoint</Data></Cell>
+        <Cell><Data ss:Type="String">Time (s)</Data></Cell>
+        <Cell><Data ss:Type="String">Temperature</Data></Cell>
+        <Cell><Data ss:Type="String">pH</Data></Cell>
+        <Cell><Data ss:Type="String">Agitation</Data></Cell>
+      </Row>
+    <% (@minimumGroupInt..@maximumGroupInt).each do |line| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= line %></Data></Cell>
+
+        <Cell><Data ss:Type="Number"><%= if @temperatures and !@temperatures.empty? and @temperatures.last.group_int == line then @temperatures.pop.value end  %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= if @pHs and !@pHs.empty? and @pHs.last.group_int == line then @pHs.pop.value end %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= if @agitations and !@agitations.empty? and @agitations.last.group_int == line then @agitations.pop.value end %></Data></Cell>
+        <Cell><Data ss:Type="Number"><% if @dissolvedOxygens and !@dissolvedOxygens.empty? and @dissolvedOxygens.last.group_int == line then @dissolvedOxygens.pop.value end %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
