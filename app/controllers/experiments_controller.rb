@@ -96,4 +96,12 @@ class ExperimentsController < ApplicationController
     @experiment = Experiment.last
     redirect_to @experiment
   end
+
+  def raw_data
+    @experiment = Experiment.find(params[:id])
+    @temperatures = @experiment.datapoints.where(:dataType => "temperature").order("id desc").all
+    @pHs = @experiment.datapoints.where(:dataType => "pH").order("id desc").all
+    @agitations = @experiment.datapoints.where(:dataType => "agitation").order("id desc").all
+    @dissolvedOxygens = @experiment.datapoints.where(:dataType => "do").order("id desc").all
+  end
 end
