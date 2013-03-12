@@ -23,7 +23,6 @@ class ExperimentsController < ApplicationController
     gon.doData = [{:values => @dissolvedOxygens.map{ |d| {:x => (d.time-@experiment.startTime).seconds, :y => d.value} }, :key=> "Experiment id:#{@experiment.id}", :color =>'#ff7f0e'}]
     gon.agitData = [{:values => @agitations.map{ |d| {:x => (d.time-@experiment.startTime).seconds, :y => d.value} }, :key=> "Experiment id:#{@experiment.id}", :color =>'#ff7f0e'}]
 
-    puts gon.temperatureData
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @experiment }
